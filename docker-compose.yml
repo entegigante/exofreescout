@@ -19,13 +19,13 @@ services:
       - ENABLE_SSL_PROXY=TRUE
       - APP_PROXY=TRUE
       - APP_TRUSTED_PROXIES=*
-      - APP_DEBUG=false
+      - APP_DEBUG=true
       - CONTAINER_NAME=freescout-app
     volumes:
       - freescout_data:/data
       - freescout_logs:/www/logs
       # If you want to use the local code (the fork), uncomment the next line:
-      # - .:/www/html
+      - .:/www/html
     depends_on:
       - mariadb
 
