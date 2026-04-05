@@ -18,6 +18,7 @@ services:
       - ADMIN_PASS=${ADMIN_PASSWORD:-freescout}
       - ENABLE_SSL_PROXY=TRUE
       - APP_TRUSTED_PROXIES=*
+      - APP_DEBUG=true
       - CONTAINER_NAME=freescout-app
     volumes:
       - freescout_data:/data
