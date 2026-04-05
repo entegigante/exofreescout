@@ -19,7 +19,7 @@ services:
       - ENABLE_SSL_PROXY=TRUE
       - APP_PROXY=TRUE
       - APP_TRUSTED_PROXIES=*
-      - APP_DEBUG=true
+      - APP_DEBUG=false
       - CONTAINER_NAME=freescout-app
     volumes:
       - freescout_data:/data
