@@ -12,11 +12,12 @@ services:
       - DB_NAME=${DB_DATABASE:-freescout}
       - DB_USER=${DB_USERNAME:-freescout}
       - DB_PASS=${DB_PASSWORD}
-      - APP_URL=${SERVICE_FQDN_APP:-https://support.example.com}
-      - SITE_URL=${SERVICE_FQDN_APP:-https://support.example.com}
+      - APP_URL=${APP_URL:-https://sos.exosfera.org}
+      - SITE_URL=${APP_URL:-https://sos.exosfera.org}
       - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@example.com}
       - ADMIN_PASS=${ADMIN_PASSWORD:-freescout}
       - ENABLE_SSL_PROXY=TRUE
+      - APP_PROXY=TRUE
       - APP_TRUSTED_PROXIES=*
       - APP_DEBUG=true
       - CONTAINER_NAME=freescout-app
