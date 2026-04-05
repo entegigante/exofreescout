@@ -1,0 +1,14 @@
+{
+    "name": "ExoGreetings",
+    "alias": "exogreetings",
+    "description": "Un saludo cordial de Exosfera para todo el equipo.",
+    "keywords": [],
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\ExoGreetings\\Providers\\ExoGreetingsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
