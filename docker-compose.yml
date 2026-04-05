@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     environment:
       - DB_TYPE=mysql
-      - DB_HOST=freescout-db
+      - DB_HOST=mariadb
       - DB_PORT=3306
       - DB_NAME=${DB_DATABASE:-freescout}
       - DB_USER=${DB_USERNAME:-freescout}
@@ -25,9 +25,9 @@ services:
       # If you want to use the local code (the fork), uncomment the next line:
       # - .:/www/html
     depends_on:
-      - db
+      - mariadb
 
-  db:
+  mariadb:
     image: mariadb:10.6
     container_name: freescout-db
     restart: unless-stopped
