@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  freescout:
+    image: tiredofit/freescout:latest
+    container_name: freescout-app
+    restart: unless-stopped
+    environment:
+      - DB_TYPE=mysql
+      - DB_HOST=freescout-db
+      - DB_PORT=3306
+      - DB_NAME=${DB_DATABASE:-freescout}
+      - DB_USER=${DB_USERNAME:-freescout}
+      - DB_PASS=${DB_PASSWORD}
+      - APP_URL=${SERVICE_FQDN_APP:-https://support.example.com}
+      - SITE_URL=${SERVICE_FQDN_APP:-https://support.example.com}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@example.com}
+      - ADMIN_PASS=${ADMIN_PASSWORD:-freescout}
+      - ENABLE_SSL_PROXY=TRUE
+      - APP_TRUSTED_PROXIES=*
+      - CONTAINER_NAME=freescout-app
+    volumes:
+      - freescout_data:/data
+      - freescout_logs:/www/logs
+      # If you want to use the local code (the fork), uncomment the next line:
+      # - .:/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.6
+    container_name: freescout-db
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE:-freescout}
+      - MYSQL_USER=${DB_USERNAME:-freescout}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - freescout_db_data:/var/lib/mysql
+
+volumes:
+  freescout_data:
+  freescout_logs:
+  freescout_db_data:
